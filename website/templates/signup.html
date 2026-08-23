@@ -4,6 +4,14 @@
 
 {% block content %}
 
-<h2> Sign up page</h2>
+<h2><center> Sign up page</center></h2>
+
+<form method = 'post'>
+    Email : <br><input type="email" class = "email" placeholder="Enter your email address"> <br>
+    Username :<br> <input type = "text" class = "username" placeholder="Enter username"><br>
+    Password :<br><input type="password" class = "password" placeholder = "Create your password"> <br>
+    Confirm Password :<br><input type="password" class = "password_confirm" placeholder="Retype your password"> <br>
+    <button type="submit">Login</button>
+</form>
 
 {% endblock %}

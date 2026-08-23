@@ -6,10 +6,33 @@
 
 <h2> <center>Login Page</center></h2>
 
-<form method = 'post'>
-    Email : <input type="email" class = "email"> <br>
-    Password :<input type="password" class = "email"> <br>
-    <button type="submit">Login</button>
+<form method = 'POST'>
+    {{form.hidden_tag()}}
+
+    <div>
+        {%if form.form_errors%}
+            {% for errors in form.form_errors %}
+                <p class ="errors">{{error}}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        {{form.email.label}}
+        {{form.email()}}
+        {%for error in form.email.errors %}
+            <p class="errors">{{error}}</p>
+        {% endfor %}
+    </div>
+    <div>
+        {{form.password.label}}
+        {{form.password()}}
+        {%for error in form.password.errors %}
+            <p class="errors">{{error}} </p>
+        {%endfor%}
+    </div>
+    <div>
+        {{form.login()}}
+    </div>
 </form>
 
 {% endblock %}

@@ -14,6 +14,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
     db.init_app(app)
     login_manager.init_app(app)
+    login_manager.login_view = "auth.login"
 
     from .models import User
     

@@ -10,9 +10,9 @@
     {{form.hidden_tag()}}
 
     <div>
-        {%if form.form_errors%}
+        {%if form.form_errors %}
             {% for errors in form.form_errors %}
-                <p class ="errors">{{error}}</p>
+                <p class ="errors">{{errors}}</p>
             {% endfor %}
         {% endif %}
     </div>

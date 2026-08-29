@@ -3,7 +3,7 @@ from .forms import SignupForm , LoginForm
 from .models import User
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user 
+from flask_login import login_user , logout_user
 
 
 
@@ -41,6 +41,11 @@ def signup():
         return redirect(url_for("auth.login"))
 
     return render_template("signup.html", form=form)
+
+@auth.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("auth.login"))
 
 
 

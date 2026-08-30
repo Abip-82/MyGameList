@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Games</title>
+</head>
+<body>
+    <h2>Search Games</h2><br><br>
+    <form method = 'POST'>
+        <h3>Enter a Game that you want to search</h3><br>
+        <input name="search" type="text" required><br>
+        <button type="Submit">Search</button>
+    </form>
+    {%if games%}
+        {% for game in games %}
+            <div>
+            <h3>{{game.name}}</h3>
+                {% if game.background_image %}
+                    <img src="{{game.background_image}}" alt="{{game.name}}" width="200">
+                {%endif%}
+            </div>
+        {%endfor%}
+    {%else%}
+            <p>No games found</p>
+    {%endif%}
+</body>
+</html>

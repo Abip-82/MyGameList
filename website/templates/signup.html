@@ -9,6 +9,13 @@
 <form method = 'POST'>
    {{ form.hidden_tag() }}
 
+   <div>
+    {%if form.form_errors%}
+        {%for error in form.form_errors%}
+            <p class ="errors">{{error}}</p>
+        {%endfor%}
+    {%endif%}
+   </div>
     <div>
         {{ form.email.label }}
         {{ form.email() }}

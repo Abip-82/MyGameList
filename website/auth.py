@@ -30,12 +30,22 @@ def signup():
     form = SignupForm()
 
     if form.validate_on_submit():
-        email = form.email.data
+        email = form.email.data.strip()
         password = form.password.data
-        username = form.username.data
-        password_hashed = generate_password_hash(password)
+        username = form.username.data.strip()
 
-        user = User(email=email,username=username,password_hashed=password_hashed)
+        existing_email = User.query.filter_by(email=email).first()
+        if existing_email:
+            form.form_errors = ["Email already exists"]
+            return render_template("signup.html", form=form)
+
+        existing_username = User.query.filter_by(username=username).first()
+        if existing_username:
+            form.form_errors = ["Username already exists"]
+            return render_template("signup.html", form=form)
+
+        password_hashed = generate_password_hash(password)
+        user = User(email=email, username=username, password_hashed=password_hashed)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for("auth.login"))

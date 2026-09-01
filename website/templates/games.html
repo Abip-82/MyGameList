@@ -19,6 +19,11 @@
                 {% if game.background_image %}
                     <img src="{{game.background_image}}" alt="{{game.name}}" width="200">
                 {%endif%}
+                <form method="POST" action ="{{url_for('views.addgame')}}">
+                    <input type = "hidden" name ="api_id" value="{{game.id}}">
+                    <input type="hidden" name="title" value = "{{game.name}}">
+                    <button type = "submit"> Add Game </button>
+                </form>
             </div>
         {%endfor%}
     {%else%}

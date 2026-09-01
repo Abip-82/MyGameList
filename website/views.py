@@ -28,3 +28,10 @@ def games():
         data = response.json()
         games = data.get("results",[])
     return render_template("games.html", games = games)
+
+@views.route("/addgame" , methods = ['POST'])
+@login_required
+def addgame():
+    title = request.form.get("title")
+    api_id = request.form.get("api_id")
+    return f"Added {title} to your collection"
